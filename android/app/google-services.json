@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1094941550793",
+    "project_id": "decksplayer-42757",
+    "storage_bucket": "decksplayer-42757.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1094941550793:android:19d61bae89992de33cc518",
+        "android_client_info": {
+          "package_name": "com.gonojuarez.decksplayer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1094941550793-i3aaul80345s7q90ap35il500s0tohmr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAyCTO5HYJNSF_2_sPHlK0KOnAAmUoqE8w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1094941550793-i3aaul80345s7q90ap35il500s0tohmr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

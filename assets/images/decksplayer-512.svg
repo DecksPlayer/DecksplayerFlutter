@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="512"
+   height="512"
+   viewBox="0 0 512 512"
+   version="1.1"
+   id="svg5"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs2" />
+  <g
+     id="layer1">
+    <rect
+       style="display:inline;fill:#ececec;fill-opacity:0.892086;fill-rule:nonzero;stroke:#f2f2f2;stroke-width:13.9156;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.52518"
+       id="rect1709"
+       width="486.08444"
+       height="486.08444"
+       x="11.9578"
+       y="11.9578"
+       ry="86.729164" />
+    <ellipse
+       style="display:inline;fill:none;fill-opacity:1;stroke:#000000;stroke-width:20.5402;stroke-opacity:1"
+       id="path9870"
+       cx="290.67447"
+       cy="239.18909"
+       rx="118.41845"
+       ry="119.83146" />
+    <ellipse
+       style="display:inline;fill:none;fill-opacity:1;stroke:#000000;stroke-width:23.4639;stroke-opacity:1"
+       id="path9893"
+       cx="290.20309"
+       cy="240.07211"
+       rx="93.896248"
+       ry="95.116631" />
+    <ellipse
+       style="display:inline;fill:none;fill-opacity:1;stroke:#000000;stroke-width:17.8395;stroke-opacity:1"
+       id="path9893-0"
+       cx="289.34384"
+       cy="239.88266"
+       rx="70.039398"
+       ry="73.709801" />
+    <ellipse
+       style="display:inline;fill:none;fill-opacity:1;stroke:#000000;stroke-width:20.5402;stroke-opacity:1"
+       id="path9910"
+       cx="292.67032"
+       cy="239.18909"
+       rx="15.301259"
+       ry="16.648073" />
+    <rect
+       style="display:inline;fill:#16502d;fill-opacity:1;stroke:#16502d;stroke-width:20.5402;stroke-opacity:1"
+       id="rect9914"
+       width="78.502121"
+       height="81.853035"
+       x="93.254745"
+       y="323.12308"
+       ry="27.675173" />
+    <rect
+       style="display:inline;fill:#000000;fill-opacity:1;stroke:#800000;stroke-width:10.714;stroke-opacity:1"
+       id="rect9912-1"
+       width="6.6441483"
+       height="202.69853"
+       x="365.68161"
+       y="-145.38901"
+       ry="36.290821"
+       transform="matrix(0.47243474,0.88136566,-0.81006772,0.58633633,0,0)" />
+  </g>
+</svg>
