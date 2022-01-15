@@ -1,5 +1,8 @@
+import 'package:decksplayer/decksplayer/HomePage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -9,46 +12,51 @@ import 'package:shared_preferences/shared_preferences.dart';
 final FirebaseAuth _auth = FirebaseAuth.instance;
 final GoogleSignIn googleSignIn = GoogleSignIn();
 
+class Authentication{
+  static UserSettings _userSettings = new UserSettings();
+
+  static Future<FirebaseApp> initFirebase( {required BuildContext context}) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool authSignedIn = prefs.getBool('auth') ?? false;
+      FirebaseApp firebaseApp = await Firebase.initializeApp();
+      User? user = FirebaseAuth.instance.currentUser;
+      if(user != null){
+        _userSettings.setUserData(user);
+      }
+      return firebaseApp;
+    }
+   static Future<User?> singInWithGoogle() async {
+     FirebaseAuth auth = FirebaseAuth.instance;
+    User? user;
+    final GoogleSignIn googleSignIn = GoogleSignIn();
+    final GoogleSignInAccount? googleSignInAccount = await googleSignIn.signIn();
 
 
-
-Future<User?> singInWithGoogle() async {
-  await Firebase.initializeApp();
-  User? user;
-  final GoogleSignIn googleSignIn = GoogleSignIn();
-  final GoogleSignInAccount? googleSignInAccount = await googleSignIn.signIn();
-  final UserSettings _userSettings = new UserSettings();
-
-
-  if(googleSignInAccount != null){
-    final GoogleSignInAuthentication googleSignInAuthentication = await googleSignInAccount.authentication;
-    final AuthCredential credential = GoogleAuthProvider.credential(
-      accessToken: googleSignInAuthentication.accessToken,
-      idToken: googleSignInAuthentication.idToken
-    );
-
-    try{
-      final UserCredential userCredential = await _auth.signInWithCredential(credential);
-      user = userCredential.user;
-    } on FirebaseAuthException catch (e){
+    if(googleSignInAccount != null){
+      final GoogleSignInAuthentication googleSignInAuthentication = await googleSignInAccount.authentication;
+      final AuthCredential credential = GoogleAuthProvider.credential(
+          accessToken: googleSignInAuthentication.accessToken,
+          idToken: googleSignInAuthentication.idToken
+      );
+      try{
+        final UserCredential userCredential = await _auth.signInWithCredential(credential);
+        user = userCredential.user;
+        if(user != null){
+          _userSettings.setUserData(user);
+        }
+      } on FirebaseAuthException catch (e){
         if(e.code == 'acount-exist-with-different-credential')
           print('The account already exists with a different credential.');
         else if(e.code == 'invalid-credential')
           print('Error occurred while accessing credentials. Try Again');
-    } catch(e){
-      print(e);
+      } catch(e){
+        print(e);
+      }
     }
-
-    if(user !=null){
-      _userSettings.setUserData(user);
-      SharedPreferences  prefs = await SharedPreferences.getInstance();
-      prefs.setBool('auth', true);
-    }
-
     return user;
   }
 
-  Future<String> singOut() async{
+  static Future<String> singOut() async{
     await _auth.signOut();
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setBool('auth', false);
@@ -56,15 +64,12 @@ Future<User?> singInWithGoogle() async {
     return 'User Signed Out';
   }
 
-  void singOutGoogle() async{
-     await googleSignIn.signOut();
-     await _auth.signOut();
+  static void singOutGoogle() async{
+    await googleSignIn.signOut();
+    await _auth.signOut();
 
-     SharedPreferences prefs = await SharedPreferences.getInstance();
-     prefs.setBool('auth',false);
-
-
-
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setBool('auth',false);
   }
 
   Future getUser() async{
@@ -81,40 +86,47 @@ Future<User?> singInWithGoogle() async {
       }
     }
   }
+
+  static get getUserSettings {
+    return _userSettings;
+  }
+
 }
 
+
 class UserSettings{
-  String? uid;
-  String? name;
-  String? userEmail;
-  String? imageUrl;
+  String? _uid;
+  String? _name;
+  String? _userEmail;
+  String? _imageUrl;
 
   void setUserData(User user){
-    uid = user.uid;
-    name = user.displayName;
-    userEmail = user.email;
-    imageUrl = user.photoURL;
+    _uid = user.uid;
+    _name = user.displayName;
+    _userEmail = user.email;
+    _imageUrl = user.photoURL;
   }
 
   void setEmptyValue(){
-    uid = null;
-    name = null;
-    userEmail = null;
-    imageUrl = null;
+    _uid = null;
+    _name = null;
+    _userEmail = null;
+    _imageUrl = null;
   }
 
   String? get getUid{
-    return uid;
+    return _uid;
   }
   String? get getName{
-    return name;
+    return _name;
   }
 
   String? get getUserEmail{
-    return userEmail;
+    return _userEmail;
   }
 
   String? get getImageUrl{
-    return imageUrl;
+    return _imageUrl;
   }
 }
+

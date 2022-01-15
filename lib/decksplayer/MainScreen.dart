@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'dart:ui';
 
+import 'package:decksplayer/NavigationsBar/FirstNavBar.dart';
 import 'package:decksplayer/decksplayer/errorPage.dart';
 import 'package:decksplayer/loading.dart';
 import 'package:flutter/cupertino.dart';
@@ -60,7 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-
+      drawer: MainNavBar(),
       appBar: AppBar(
 
         // Here we take the value from the MyHomePage object that wascolor created by

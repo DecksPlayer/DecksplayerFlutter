@@ -54,7 +54,7 @@ class _GoogleButtonState extends State<GoogleButton>{
     setState(() {
       _isProcessing = true;
     });
-    await singInWithGoogle().then((result){
+    await Authentication.singInWithGoogle().then((result){
       print(result);
       if(result != null){
         Navigator.push(context, MaterialPageRoute(builder: (context)=> DecksPlayer()));
